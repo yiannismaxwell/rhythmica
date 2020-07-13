@@ -1,0 +1,2 @@
+A rhythm card generator.
+Generates symbols for a five beat rhythm.
