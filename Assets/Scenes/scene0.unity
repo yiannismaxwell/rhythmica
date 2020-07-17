@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -217,6 +218,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a072e4f3bc8ae042ac6d959b393dbd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &625595701
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,22 +331,14 @@ MonoBehaviour:
   prefabCell: {fileID: 8310777644491967476, guid: b6d0715952dea1a479c3fe1f239eaaf1,
     type: 3}
   blankSprite: {fileID: 21300000, guid: 850e53a2de0698b40bdd702cf2161e25, type: 3}
-  blueSprite: {fileID: 21300000, guid: 4c1270fc990a1434abe7df4e68126848, type: 3}
-  jelloSprite: {fileID: 21300000, guid: 9146e430ab26fa149ad4c93002997b7d, type: 3}
-  restSprite: {fileID: 21300000, guid: d08b566283dcd7941b324aed616033dd, type: 3}
-  jellojelloSprite: {fileID: 21300000, guid: c6ac59063b5196f4980bd5deafb4f4bb, type: 3}
-  twoSprite: {fileID: 21300000, guid: bcf736ed63fbc0c46890dd7c3c4b5358, type: 3}
-  pineappleSprite: {fileID: 21300000, guid: e92909f06b9684740adec34c8e94469a, type: 3}
-  restrestSprite: {fileID: 21300000, guid: c78ee404bf11d8240a294f86e16b7ab9, type: 3}
-  huckleberrySprite: {fileID: 21300000, guid: 4626a4a1471f93546b9f9e2ed8aec489, type: 3}
-  fourSprite: {fileID: 21300000, guid: 06d5e7d3217f8f6458bc7aac5eb83812, type: 3}
-  restrestrestrestSprite: {fileID: 21300000, guid: a1adf1f98c839e84ca1d91664697ae78,
-    type: 3}
-  purpleSprite: {fileID: 21300000, guid: d8e797c78b1bda54383ca09e1a0bde9e, type: 3}
-  gooseberrySprite: {fileID: 21300000, guid: c30d7b908bb3ad74bbc0c2ec6a1a93c7, type: 3}
-  berrygooseSprite: {fileID: 21300000, guid: d5177c2682ca5f049896680acdc45f1d, type: 3}
-  cookieSprite: {fileID: 21300000, guid: 22b4c926a0a912449a62c178f78b9ed0, type: 3}
-  cucumberSprite: {fileID: 21300000, guid: a9a3e74a890e4704ebfcd467815359d9, type: 3}
+  taSprite: {fileID: 21300000, guid: 4c1270fc990a1434abe7df4e68126848, type: 3}
+  titiSprite: {fileID: 21300000, guid: 9146e430ab26fa149ad4c93002997b7d, type: 3}
+  saSprite: {fileID: 21300000, guid: d08b566283dcd7941b324aed616033dd, type: 3}
+  tikatikaSprite: {fileID: 21300000, guid: 4626a4a1471f93546b9f9e2ed8aec489, type: 3}
+  titikaSprite: {fileID: 21300000, guid: c30d7b908bb3ad74bbc0c2ec6a1a93c7, type: 3}
+  tikatiSprite: {fileID: 21300000, guid: d5177c2682ca5f049896680acdc45f1d, type: 3}
+  taaSprite: {fileID: 21300000, guid: bcf736ed63fbc0c46890dd7c3c4b5358, type: 3}
+  tamtiSprite: {fileID: 21300000, guid: 664e4111716911f4498bc0db424f5f4d, type: 3}
 --- !u!114 &1374486832
 MonoBehaviour:
   m_ObjectHideFlags: 0

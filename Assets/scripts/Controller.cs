@@ -9,9 +9,10 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     #region fields
-    const int MAX_LENGTH = 5;
-    const int MIN_LEVEL = 2; // 1 is blank
+    const int MAX_LENGTH = 4;
+    const int MIN_LEVEL = 3; // 1 is blank
     const int MAX_LEVEL = 6; //27;
+    const int OFFSET = 64; // half spritewidth
     static List<Unit> units = new List<Unit>();
     static Card card;
     static GameObject[] cells;
@@ -24,35 +25,22 @@ public class Controller : MonoBehaviour
     [SerializeField]
     Sprite blankSprite;
     [SerializeField]
-    Sprite blueSprite;
+    Sprite taSprite;
     [SerializeField]
-    Sprite jelloSprite;
+    Sprite titiSprite;
     [SerializeField]
-    Sprite restSprite;
+    Sprite saSprite;
     [SerializeField]
-    Sprite jellojelloSprite;
+    Sprite tikatikaSprite;
     [SerializeField]
-    Sprite twoSprite;
+    Sprite titikaSprite;
     [SerializeField]
-    Sprite pineappleSprite;
+    Sprite tikatiSprite;
     [SerializeField]
-    Sprite restrestSprite;
+    Sprite taaSprite;
     [SerializeField]
-    Sprite huckleberrySprite;
-    [SerializeField]
-    Sprite fourSprite;
-    [SerializeField]
-    Sprite restrestrestrestSprite;
-    [SerializeField]
-    Sprite purpleSprite;
-    [SerializeField]
-    Sprite gooseberrySprite;
-    [SerializeField]
-    Sprite berrygooseSprite;
-    [SerializeField]
-    Sprite cookieSprite;
-    [SerializeField]
-    Sprite cucumberSprite;
+    Sprite tamtiSprite;
+
     #endregion
 
     #region methods
@@ -76,21 +64,14 @@ public class Controller : MonoBehaviour
     void initialiseUnits()
     {
         units.Add(new Unit("blank", 0, blankSprite));
-        units.Add(new Unit("blue", 1, blueSprite));
-        units.Add(new Unit("jello", 1, jelloSprite));
-        units.Add(new Unit("rest", 1, restSprite));
-        units.Add(new Unit("jellojello", 2, jellojelloSprite));
-        units.Add(new Unit("two", 2, twoSprite));
-        units.Add(new Unit("pineapple", 1, pineappleSprite));
-        units.Add(new Unit("restrest", 2, restrestSprite));
-        units.Add(new Unit("huckleberry", 1, huckleberrySprite));
-        units.Add(new Unit("four", 4, fourSprite));
-        units.Add(new Unit("restrestrestrest", 4, fourSprite));
-        units.Add(new Unit("purple", 1, purpleSprite));
-        units.Add(new Unit("gooseberry", 1, gooseberrySprite));
-        units.Add(new Unit("berrygoose", 1, berrygooseSprite));
-        units.Add(new Unit("cookie", 1, cookieSprite));
-        units.Add(new Unit("cucumber", 1, cucumberSprite));
+        units.Add(new Unit("ta", 1, taSprite));
+        units.Add(new Unit("titi", 1, titiSprite));
+        units.Add(new Unit("sa", 1, saSprite));
+        units.Add(new Unit("tikatika", 1, tikatikaSprite));
+        units.Add(new Unit("titika", 1, titikaSprite));
+        units.Add(new Unit("tikati", 1, tikatiSprite));
+        units.Add(new Unit("taa", 2, taaSprite));
+        units.Add(new Unit("tamti", 2, tamtiSprite));
 
     }
 
@@ -105,7 +86,16 @@ public class Controller : MonoBehaviour
             Destroy(cells[i]);
             cells[i] = Instantiate(prefabCell);
             Vector2 screenPos = new Vector2(Screen.width / (length + 1) * (i + 1), Screen.height / 2);
+
+
+            // Centre 2-beat units
+            if (rhythm[i].Name.Equals("tamti"))
+            {
+                screenPos.x = Screen.width / (length + 1) * (i + (float) 1.5);
+            }
+
             Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+
             cells[i].transform.position = worldPos;
 
             SpriteRenderer sr = cells[i].GetComponent<SpriteRenderer>();
