@@ -56,7 +56,7 @@ public class Controller : MonoBehaviour
 
         Card card = new Card(units, MAX_LENGTH, level);
         //card.printCard();
-        updateCard();
+        //updateCard();
         
     }
 
