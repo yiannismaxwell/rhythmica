@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Splash : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Splash : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("scene0"); ;
         }
     }
 }

@@ -24,6 +24,7 @@ public class Swiper : MonoBehaviour
 
         GameObject controlObj = GameObject.FindGameObjectWithTag("Controller");
         control = controlObj.GetComponent<Controller>();
+
     }
 
     // Update is called once per frame
@@ -56,21 +57,16 @@ public class Swiper : MonoBehaviour
                     // check drag direction
                     if (lastPos.x > firstPos.x)
                     {
-                        control.LevelUp();
-                        control.updateCard();
-                        print("Swipe right");
+                        EventManager.main.TriggerNextRhythm();
                     }
                     else
                     {
-                        control.LevelDown();
-                        control.updateCard();
-                        print("Swipe left");
+                        EventManager.main.TriggerPreviousRhythm();
                     }
                 }
                 else
                 {
-                    control.updateCard();
-                    print("press");
+                    EventManager.main.TriggerNewCard();
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 /// <summary>
@@ -20,6 +21,9 @@ public class Controller : MonoBehaviour
     int length;
     [SerializeField]
     GameObject prefabCell;
+    float cellWidth;
+    float screenCentre;
+
 
     // Rhythm unit sprites
     [SerializeField]
@@ -55,8 +59,22 @@ public class Controller : MonoBehaviour
         level = MIN_LEVEL;
 
         Card card = new Card(units, MAX_LENGTH, level);
-        //card.printCard();
-        //updateCard();
+
+        // Determine max length according to screenwidth
+        GameObject tempCell = Instantiate<GameObject>(prefabCell);
+        BoxCollider2D collider = tempCell.GetComponent<BoxCollider2D>();
+        cellWidth = collider.size.x;
+        print(cellWidth);
+        Destroy(tempCell);
+        screenCentre = ScreenUtils.ScreenLeft + 
+            (ScreenUtils.ScreenRight - ScreenUtils.ScreenLeft)/2;
+
+        updateCard();
+
+        // add listeners
+        EventManager.main.onNewCard += updateCard;
+        EventManager.main.onNextRhythm += LevelUp;
+        EventManager.main.onPreviousRhythm += LevelDown;
         
     }
 
@@ -86,7 +104,7 @@ public class Controller : MonoBehaviour
             Destroy(cells[i]);
             cells[i] = Instantiate(prefabCell);
             Vector2 screenPos = new Vector2(Screen.width / (length + 1) * (i + 1), Screen.height / 2);
-
+            //Vector2 screenPos = new Vector2(Screen.width / 2 - 3 * cellWidth + 2 *cellWidth* i, Screen.height / 2);
 
             // Centre 2-beat units
             if (rhythm[i].Name.Equals("tamti"))
@@ -101,20 +119,18 @@ public class Controller : MonoBehaviour
             SpriteRenderer sr = cells[i].GetComponent<SpriteRenderer>();
             sr.sprite = rhythm[i].Sprite;
         }
-
-
     }
 
     public void LevelUp()
     {
         level = Math.Min(level + 1, units.Count);
-        print(level);
+        updateCard();
     }
     
     public void LevelDown()
     {
         level = Math.Max(level - 1, MIN_LEVEL);
-        print(level);
+        updateCard();
     }
     #endregion
 }
