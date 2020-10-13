@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Splash screen for touch inputs
+/// </summary>
 public class Splash : MonoBehaviour
 {
-        //void OnMouseDown()
-        //{
-        //    Destroy(gameObject);
-        //}
+    public string sceneToLoad;
 
     void Update()
     {
@@ -19,7 +19,7 @@ public class Splash : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            SceneManager.LoadScene("scene0"); ;
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 }

@@ -24,6 +24,13 @@ public class Controller : MonoBehaviour
     float cellWidth;
     float screenCentre;
 
+    // previews
+    bool previewOn = true;
+    [SerializeField]
+    GameObject nextPreviewPrefab;
+    [SerializeField]
+    GameObject backPreviewPrefab;
+
 
     // Rhythm unit sprites
     [SerializeField]
@@ -64,18 +71,67 @@ public class Controller : MonoBehaviour
         GameObject tempCell = Instantiate<GameObject>(prefabCell);
         BoxCollider2D collider = tempCell.GetComponent<BoxCollider2D>();
         cellWidth = collider.size.x;
-        print(cellWidth);
         Destroy(tempCell);
         screenCentre = ScreenUtils.ScreenLeft + 
             (ScreenUtils.ScreenRight - ScreenUtils.ScreenLeft)/2;
 
-        updateCard();
 
-        // add listeners
+        // instantiate previews
+        nextPreviewPrefab = Instantiate<GameObject>(nextPreviewPrefab);
+        SpriteRenderer sr = nextPreviewPrefab.GetComponent<SpriteRenderer>();
+        float previewWidth = sr.sprite.bounds.size.x;
+        Vector3 previewPos = new Vector3(ScreenUtils.ScreenRight - previewWidth,
+            ScreenUtils.ScreenBottom + previewWidth, 0);
+        nextPreviewPrefab.transform.position = previewPos;
+
+        backPreviewPrefab = Instantiate<GameObject>(backPreviewPrefab);
+        sr = backPreviewPrefab.GetComponent<SpriteRenderer>();
+        previewPos = new Vector3(ScreenUtils.ScreenLeft + previewWidth,
+            ScreenUtils.ScreenBottom + previewWidth, 0);
+        backPreviewPrefab.transform.position = previewPos;
+
+
+
+
+        updateCard();
+        UpdatePreview();
+
+        AddListeners();
+
+        
+    }
+
+    void UpdatePreview()
+    {
+        if (previewOn)
+        {
+            SpriteRenderer sr = nextPreviewPrefab.GetComponent<SpriteRenderer>();
+            if (level == units.Count)
+            {
+                sr.sprite = units[0].Sprite;
+            }
+            else
+            {
+                sr.sprite = units[Math.Min(level, units.Count - 1)].Sprite;
+            }
+
+            sr = backPreviewPrefab.GetComponent<SpriteRenderer>();
+            if (level == MIN_LEVEL)
+            {
+                sr.sprite = units[0].Sprite;
+            }
+            else
+            {
+                sr.sprite = units[level - 1].Sprite;
+            }
+        }
+    }
+
+    void AddListeners()
+    {
         EventManager.main.onNewCard += updateCard;
         EventManager.main.onNextRhythm += LevelUp;
         EventManager.main.onPreviousRhythm += LevelDown;
-        
     }
 
       
@@ -96,7 +152,6 @@ public class Controller : MonoBehaviour
     public void updateCard()
     {
         card = new Card(units, length, level);
-        //card.printCard();
 
         Unit[] rhythm = card.getUnits;
         for (int i=0; i<length; i++)
@@ -125,12 +180,14 @@ public class Controller : MonoBehaviour
     {
         level = Math.Min(level + 1, units.Count);
         updateCard();
+        UpdatePreview();
     }
     
     public void LevelDown()
     {
         level = Math.Max(level - 1, MIN_LEVEL);
         updateCard();
+        UpdatePreview();
     }
     #endregion
 }
