@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Android/AndroidSplash.unity
+- path: Assets/Scenes/Windows/scene0.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

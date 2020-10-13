@@ -30,7 +30,14 @@ public class Controller : MonoBehaviour
     GameObject nextPreviewPrefab;
     [SerializeField]
     GameObject backPreviewPrefab;
-
+    [SerializeField]
+    GameObject eyePrefab;
+    [SerializeField]
+    Sprite eyeSprite;
+    [SerializeField]
+    GameObject helpPrefab;
+    [SerializeField]
+    Sprite questionMark;
 
     // Rhythm unit sprites
     [SerializeField]
@@ -90,7 +97,17 @@ public class Controller : MonoBehaviour
             ScreenUtils.ScreenBottom + previewWidth, 0);
         backPreviewPrefab.transform.position = previewPos;
 
+        eyePrefab = Instantiate<GameObject>(eyePrefab);
+        sr = eyePrefab.GetComponent<SpriteRenderer>();
+        Vector3 eyePos = new Vector3(ScreenUtils.ScreenLeft + previewWidth,
+            ScreenUtils.ScreenTop - previewWidth, 0);
+        eyePrefab.transform.position = eyePos;
 
+        helpPrefab = Instantiate<GameObject>(helpPrefab);
+        sr = helpPrefab.GetComponent<SpriteRenderer>();
+        Vector3 helpPos = new Vector3(ScreenUtils.ScreenRight - previewWidth,
+            ScreenUtils.ScreenTop - previewWidth, 0);
+        helpPrefab.transform.position = helpPos;
 
 
         updateCard();
@@ -102,29 +119,47 @@ public class Controller : MonoBehaviour
     }
 
     void UpdatePreview()
-    {
+    {   
+        SpriteRenderer srNext = nextPreviewPrefab.GetComponent<SpriteRenderer>();
+        SpriteRenderer srBack = backPreviewPrefab.GetComponent<SpriteRenderer>();
+        SpriteRenderer srEye = eyePrefab.GetComponent<SpriteRenderer>();
+        SpriteRenderer srHelp = helpPrefab.GetComponent<SpriteRenderer>();
         if (previewOn)
         {
-            SpriteRenderer sr = nextPreviewPrefab.GetComponent<SpriteRenderer>();
+            
             if (level == units.Count)
             {
-                sr.sprite = units[0].Sprite;
+                srNext.sprite = units[0].Sprite;
             }
             else
             {
-                sr.sprite = units[Math.Min(level, units.Count - 1)].Sprite;
+                srNext.sprite = units[Math.Min(level, units.Count - 1)].Sprite;
             }
-
-            sr = backPreviewPrefab.GetComponent<SpriteRenderer>();
             if (level == MIN_LEVEL)
             {
-                sr.sprite = units[0].Sprite;
+                srBack.sprite = units[0].Sprite;
             }
             else
             {
-                sr.sprite = units[level - 1].Sprite;
+                srBack.sprite = units[level - 1].Sprite;
             }
+            srEye.sprite = eyeSprite;
+            srHelp.sprite = questionMark;
         }
+        else
+        {
+            srNext.sprite = units[0].Sprite;
+            srBack.sprite = units[0].Sprite;
+            srEye.sprite = units[0].Sprite;
+            srHelp.sprite = units[0].Sprite;
+        }
+    }
+
+    // Toggle preview, help, visible
+    void ToggleHUD()
+    {
+        previewOn = !previewOn;
+        UpdatePreview();
     }
 
     void AddListeners()
@@ -132,6 +167,7 @@ public class Controller : MonoBehaviour
         EventManager.main.onNewCard += updateCard;
         EventManager.main.onNextRhythm += LevelUp;
         EventManager.main.onPreviousRhythm += LevelDown;
+        EventManager.main.onHide += ToggleHUD;
     }
 
       

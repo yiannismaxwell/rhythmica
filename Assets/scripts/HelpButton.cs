@@ -9,11 +9,12 @@ public class HelpButton : MonoBehaviour
     void Start()
     {
         // place help icon on top right of screen
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        /*SpriteRenderer sr = GetComponent<SpriteRenderer>();
         float width = sr.sprite.bounds.size.x;
         Vector3 pos = new Vector3(ScreenUtils.ScreenRight - width,
             ScreenUtils.ScreenTop - width, -1f);
         transform.position = pos;
+        */
     }
 
     void OnMouseDown()

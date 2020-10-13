@@ -114,6 +114,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabCell: {fileID: 8310777644491967476, guid: b6d0715952dea1a479c3fe1f239eaaf1,
     type: 3}
+  nextPreviewPrefab: {fileID: 3980320949881681995, guid: c4cfb0b55d7e4e442925f3169c6e15e9,
+    type: 3}
+  backPreviewPrefab: {fileID: 476887991124675042, guid: 5c43f5ad647d7cd4f8a158fad6670646,
+    type: 3}
+  eyePrefab: {fileID: 6879225455533252415, guid: b4044b5379502f641851d23e0cc75b32,
+    type: 3}
+  eyeSprite: {fileID: 21300000, guid: 36d6a9ee93b822c429818eb5222cce23, type: 3}
+  helpPrefab: {fileID: 125278815047238774, guid: a083ff1d3449dee438cc731412452988,
+    type: 3}
+  questionMark: {fileID: 21300000, guid: 94ea5cece16273a4ab75c6feb1f03614, type: 3}
   blankSprite: {fileID: 21300000, guid: 850e53a2de0698b40bdd702cf2161e25, type: 3}
   taSprite: {fileID: 21300000, guid: 4c1270fc990a1434abe7df4e68126848, type: 3}
   titiSprite: {fileID: 21300000, guid: 9146e430ab26fa149ad4c93002997b7d, type: 3}

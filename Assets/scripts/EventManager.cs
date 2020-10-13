@@ -10,6 +10,7 @@ public class EventManager : MonoBehaviour
     public event Action onNewCard;
     public event Action onNextRhythm;
     public event Action onPreviousRhythm;
+    public event Action onHide;
 
     void Awake()
     {
@@ -29,6 +30,14 @@ public class EventManager : MonoBehaviour
     public void TriggerPreviousRhythm()
     {
         onPreviousRhythm?.Invoke();
+    }
+
+    /// <summary>
+    /// Event for hiding previews
+    /// </summary>
+    public void TriggerHide()
+    {
+        onHide?.Invoke();
     }
     
 
