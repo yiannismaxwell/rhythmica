@@ -242,7 +242,7 @@ PlayerSettings:
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
-  androidSplashScreen: {fileID: 0}
+  androidSplashScreen: {fileID: 2800000, guid: 57b7155c5607b3341bebbd66ead3aa1b, type: 3}
   AndroidKeystoreName: C:/Users/yiann/OneDrive/Documents/Coding/yiannismaxwell.keystore
   AndroidKeyaliasName: rhythmica
   AndroidBuildApkPerCpuArchitecture: 0
@@ -701,7 +701,8 @@ PlayerSettings:
   platformArchitecture: {}
   scriptingBackend:
     Android: 1
-  il2cppCompilerConfiguration: {}
+  il2cppCompilerConfiguration:
+    Android: 1
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0

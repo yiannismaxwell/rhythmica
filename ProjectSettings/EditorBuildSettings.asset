@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Windows/Help/next.unity
     guid: 02e3561fb96791649bd45e3b7f2c1e41
+  - enabled: 1
+    path: Assets/Scenes/Android/AndroidMain.unity
+    guid: 8f7947acc028cf246802dc7219ecf6b2
   m_configObjects: {}
